@@ -1,8 +1,7 @@
 FROM golang:1.24-alpine AS builder
 WORKDIR /app
-COPY go.mod ./
-RUN go mod tidy && go mod download
 COPY . .
+RUN go mod tidy && go mod download
 RUN CGO_ENABLED=0 GOOS=linux go build -o /main .
 
 FROM alpine:latest
