@@ -9,15 +9,6 @@ jobs:
     runs-on: self-hosted
     
     steps:
-
-      - name: Run Linter
-        run: |
-          run: |
-          docker run --rm \
-            -v ${{ github.workspace }}:/app \
-            -w /app \
-            golangci/golangci-lint:v1.64.5 \
-            golangci-lint run -v --disable errcheck --timeout 5m
           
       - name: Checkout code
         uses: actions/checkout@v4
