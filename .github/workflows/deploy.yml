@@ -13,10 +13,14 @@ jobs:
       - name: Run Linter (Soft Mode)
         run: |
           docker run --rm \
+            -t \
             -v ${{ github.workspace }}:/app \
             -w /app \
             golangci/golangci-lint:v1.64.5 \
-            golangci-lint run ./... --issues-exit-code 0 || true
+            golangci-lint run ./... \
+              -v \
+              --timeout 5m \
+              --issues-exit-code 0 || true
           
       - name: Checkout code
         uses: actions/checkout@v4
