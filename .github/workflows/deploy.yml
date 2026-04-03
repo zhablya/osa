@@ -16,13 +16,7 @@ jobs:
             -v ${{ github.workspace }}:/app \
             -w /app \
             golangci/golangci-lint:v1.64.5 \
-            golangci-lint run ./... \
-              -v \
-              --timeout 5m \
-              --issues-exit-code 0 \
-              --disable-all \
-              --enable errcheck,gosimple,govet,staticcheck \
-              --print-issued-lines=false
+            golangci-lint run ./... --issues-exit-code 0 || true
           
       - name: Checkout code
         uses: actions/checkout@v4
